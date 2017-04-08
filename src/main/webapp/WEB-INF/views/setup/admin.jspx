@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:t="http://www.springframework.org/tags"
+          xmlns:s="http://www.springframework.org/security/tags"
+          xmlns:f="http://www.springframework.org/tags/form"
+          xmlns:jpf="urn:jsptld:/WEB-INF/tlds/jpf.tld"
+          >
+
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:useBean id="setupAdminForm" type="com.kferenc.jpf.model.SetupAdminForm" scope="request" />
+
+    <t:message code="${errorCode}" text="" var="errorLabel"/>
+    <t:message code="forumTitle" text="??" var="forumTitle"/>
+    <t:message code="setup.admin.pageTitle" text="??" var="pageTitle"/>
+    <t:message code="setup.admin.adminBoxTitle" text="??" var="adminBosTitle"/>
+    <t:message code="setup.admin.usernameLabel" text="??" var="usernameLabel"/>
+    <t:message code="setup.admin.passwordLabel" text="??" var="passwordLabel"/>
+    <t:message code="setup.admin.confirmPasswordLabel" text="??" var="confirmPasswordLabel"/>
+    <t:message code="setup.admin.emailLabel" text="??" var="emailLabel"/>
+    <t:message code="setup.admin.databaseBoxTitle" text="??" var="databaseBoxTitle"/>
+    <t:message code="setup.admin.saveAdminLabel" text="??" var="saveAdminLabel"/>
+    <t:message code="setup.error.differentPasswordLabel" text="??" var="differentPasswordsLabel"/>
+
+    <jpf:header title="${pageTitle} - ${forumTitle}"
+                cssPath="${pageContext.request.contextPath}/resources/themes/blue/css"
+                scriptsPath="${pageContext.request.contextPath}/resources/scripts" >
+        <!---->
+        <script>
+            $(document).ready(function () {
+                $('#confirmPassword').get(0).oninput = function () {
+                    if ($('#password').val() !== $('#confirmPassword').val()) {
+                        $('#confirmPassword').get(0).setCustomValidity('${differentPasswordsLabel}');
+                    } else {
+                        $('#confirmPassword').get(0).setCustomValidity('');
+                    }
+                };
+            });
+        </script>
+    </jpf:header>
+    <body>
+        <div id="body-wrapper">
+            <div id="body-content-wrapper">
+                <jpf:log type="error" message="${errorLabel}"/>
+                <jpf:pageTitle icon="user" message="${pageTitle}" />
+                <f:form id="admin" method="post" action="admin" modelAttribute="setupAdminForm" class="progress" >
+                    <jpf:simpleBox title="${adminBoxTitle}">
+                        <jpf:labelInput label="${usernameLabel}" required="required"
+                                        type="text" path="username" value="${setupAdminForm.username}" />
+                        <jpf:labelInput label="${passwordLabel}" required="required"
+                                        type="password" path="password" />
+                        <jpf:labelInput label="${confirmPasswordLabel}" required="required"
+                                        type="password" path="confirmPassword" />
+                        <jpf:labelInput label="${emailLabel}" required="required"
+                                        type="email" path="email" value="${setupAdminForm.email}" />
+                    </jpf:simpleBox>
+                    <jpf:simpleBox title="${databaseBoxTitle}">
+                        <jpf:labelInput label="${passwordLabel}" required="required"
+                                        type="password" path="databasePassword" />
+                    </jpf:simpleBox>
+                    <jpf:button type="submit" id="submit" classes="progress"
+                                icon="document-save" value="${saveAdminLabel}" />
+                </f:form>
+            </div>
+        </div>
+    </body>
+
+</jsp:root>

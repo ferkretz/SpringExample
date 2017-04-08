@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:t="http://www.springframework.org/tags"
+          xmlns:f="http://www.springframework.org/tags/form"
+          xmlns:jpf="urn:jsptld:/WEB-INF/tlds/jpf.tld"
+          >
+
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:useBean id="loginForm" type="com.kferenc.jpf.model.LoginForm" scope="request" />
+
+    <t:message code="${warningCode}" text="" var="warningLabel"/>
+    <t:message code="forumTitle" text="??" var="forumTitle"/>
+    <t:message code="index.login.pageTitle" text="??" var="pageTitle"/>
+    <t:message code="index.login.loginBoxTitle" text="??" var="loginBoxTitle"/>
+    <t:message code="index.login.usernameLabel" text="??" var="usernameLabel"/>
+    <t:message code="index.login.passwordLabel" text="??" var="passwordLabel"/>
+    <t:message code="index.login.rememberMeLabel" text="??" var="rememberMeLabel"/>
+    <t:message code="index.login.loginLabel" text="??" var="loginLabel"/>
+
+    <jpf:header title="${pageTitle} - ${forumTitle}"
+                cssPath="${pageContext.request.contextPath}/resources/themes/blue/css"
+                scriptsPath="${pageContext.request.contextPath}/resources/scripts" >
+        <!---->
+    </jpf:header>
+    <body>
+        <div id="body-wrapper">
+            <div id="body-content-wrapper">
+                <jpf:log type="warning" message="${warningLabel}"/>
+                <jpf:pageTitle icon="user" message="${pageTitle}" />
+                <f:form id="login" method="post" action="login" modelAttribute="loginForm" class="progress" >
+                    <jpf:simpleBox title="${loginBoxTitle}">
+                        <jpf:labelInput label="${usernameLabel}" required="required"
+                                        type="text" path="username" value="${loginForm.username}" />
+                        <jpf:labelInput label="${passwordLabel}" required="required"
+                                        type="password" path="password" />
+                        <jpf:labelInput label="${rememberMeLabel}"
+                                        type="checkbox" path="rememberMe" />
+                    </jpf:simpleBox>
+                    <jpf:button type="submit" id="submit" classes="progress"
+                                icon="ok" value="${loginLabel}" />
+                </f:form>
+            </div>
+        </div>
+    </body>
+
+</jsp:root>

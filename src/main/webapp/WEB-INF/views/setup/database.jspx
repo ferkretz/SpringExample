@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:t="http://www.springframework.org/tags"
+          xmlns:f="http://www.springframework.org/tags/form"
+          xmlns:jpf="urn:jsptld:/WEB-INF/tlds/jpf.tld"
+          >
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:useBean id="setupDatabaseForm" type="com.kferenc.jpf.model.SetupDatabaseForm" scope="request" />
+
+    <t:message code="${errorCode}" text="" var="errorLabel"/>
+    <t:message code="forumTitle" text="??" var="forumTitle"/>
+    <t:message code="setup.database.pageTitle" text="??" var="pageTitle"/>
+    <t:message code="setup.database.databaseBoxTitle" text="??" var="databaseBoxTitle"/>
+    <t:message code="setup.database.hostLabel" text="??" var="hostLabel"/>
+    <t:message code="setup.database.portLabel" text="??" var="portLabel"/>
+    <t:message code="setup.database.catalogLabel" text="??" var="catalogLabel"/>
+    <t:message code="setup.database.usernameLabel" text="??" var="usernameLabel"/>
+    <t:message code="setup.database.passwordLabel" text="??" var="passwordLabel"/>
+    <t:message code="setup.database.createDatabaseLabel" text="??" var="createDatabaseLabel"/>
+    <t:message code="setup.error.onlyLettersLabel" text="??" var="onlyLettersLabel"/>
+
+    <jpf:header title="${pageTitle} - ${forumTitle}"
+                cssPath="${pageContext.request.contextPath}/resources/themes/blue/css"
+                scriptsPath="${pageContext.request.contextPath}/resources/scripts" >
+        <!---->
+        <script>
+            $(document).ready(function () {
+                $('#catalog').get(0).oninput = function () {
+                    legalVal = $('#catalog').val().replace('[^a-zA-Z]', '');
+                    if (!/^[a-zA-Z]*$/g.test($('#catalog').val())) {
+                        $('#catalog').get(0).setCustomValidity('${onlyLettersLabel}');
+                    } else {
+                        $('#catalog').get(0).setCustomValidity('');
+                    }
+                };
+            });
+        </script>
+    </jpf:header>
+    <body>
+        <div id="body-wrapper">
+            <div id="body-content-wrapper">
+                <jpf:log type="error" message="${errorLabel}"/>
+                <jpf:pageTitle icon="bookcase" message="${pageTitle}" />
+                <f:form id="database" method="post" action="" modelAttribute="setupDatabaseForm" class="progress" >
+                    <jpf:simpleBox title="${databaseBoxTitle}">
+                        <jpf:labelInput label="${hostLabel}" required="required"
+                                        type="text" path="host" value="${setupDatabaseForm.host}" />
+                        <jpf:labelInput label="${portLabel}" required="required"
+                                        type="text" path="port" value="${setupDatabaseForm.port}" />
+                        <jpf:labelInput label="${catalogLabel}" required="required"
+                                        type="text" path="catalog" value="${setupDatabaseForm.catalog}" />
+                        <jpf:labelInput label="${usernameLabel}" required="required"
+                                        type="text" path="username" value="${setupDatabaseForm.username}" />
+                        <jpf:labelInput label="${passwordLabel}" required="required"
+                                        type="password" path="password" />
+                    </jpf:simpleBox>
+                    <jpf:button type="submit" id="submit" classes="progress"
+                                icon="document-save" value="${createDatabaseLabel}" />
+                </f:form>
+            </div>
+        </div>
+    </body>
+
+</jsp:root>

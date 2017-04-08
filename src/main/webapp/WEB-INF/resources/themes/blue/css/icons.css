@@ -1,0 +1,32 @@
+.icon {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    vertical-align: middle;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.icon.cancel {background-image: url(./../images/icons/cancel.png)}
+.icon.dialog-error {background-image: url(./../images/icons/dialog-error.png)}
+.icon.dialog-information {background-image: url(./../images/icons/dialog-information.png)}
+.icon.dialog-warning {background-image: url(./../images/icons/dialog-warning.png)}
+.icon.document-save {background-image: url(./../images/icons/document-save.png)}
+.icon.no {background-image: url(./../images/icons/no.png)}
+.icon.ok {background-image: url(./../images/icons/ok.png)}
+.icon22 {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    max-width: 22px;
+    max-height: 22px;
+    vertical-align: middle;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.icon22.bookcase {background-image: url(./../images/icons22/bookcase.png)}
+.icon22.user-home {background-image: url(./../images/icons22/user-home.png)}
+.icon22.user {background-image: url(./../images/icons22/user.png)}

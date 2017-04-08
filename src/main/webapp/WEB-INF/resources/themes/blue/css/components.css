@@ -1,0 +1,130 @@
+.simple-box {
+    margin-bottom: 12px;
+}
+
+.simple-box .title {
+    display: block;
+    background: linear-gradient(#FFFFFF, #E6EAF3, #CDD6E6);
+    padding: 8px 10px;
+
+    font-size: 120%;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 0px #FFF;
+
+    border: 1px solid #AAA;
+    box-shadow: 0px 1px 0px #FFF inset;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.simple-box.collapse .title {
+    border-radius: 5px;
+}
+
+.simple-box.collapse .content {
+    display: none;
+}
+
+.simple-box .collapse-trigger {
+    display: inline-block;
+    float: right;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #999;
+    border-top: none;
+}
+
+.simple-box.collapse .collapse-trigger {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 12px solid #999;
+    border-bottom: none;    
+}
+
+.simple-box .content {
+    display: block;
+    padding: 10px 8px;
+    background-color: #ECEFF6;
+    border: 1px solid #AAA;
+    border-top: none;
+    box-shadow: 0px 1px 0px #FFF inset;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+.log {
+    padding: 8px 8px 8px 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    font-size: 120%;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #C3BCB9;
+}
+
+.log.information {
+    border-color: #009900;
+    background-color: #E8FFEE;
+    color: #009900;
+}
+
+.log.warning {
+    border-color: #AA7700;
+    background-color: #FFFFE8;
+    color: #AA7700;
+}
+
+.log.error {
+    border-color: #AA0000;
+    background-color: #FFEBE8;
+    color: #AA0000;
+}
+
+.log div.icon {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 5px;
+}
+
+.log div.text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.page-title {
+    margin: 10px 10px 20px 10px;
+
+    font-size: 160%;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 0px #FFF;
+}
+
+.page-title .icon22 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.page-title .text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.label-input label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.label-input input {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.label-input.checkbox input,
+.label-input.checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 8px;
+}

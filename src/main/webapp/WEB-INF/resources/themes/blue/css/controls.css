@@ -1,0 +1,94 @@
+:focus {
+    outline:none;
+}
+
+::-moz-focus-inner {
+    border:0;
+}
+
+button,input[type=text],[type=password],[type=email] {
+    background-color: #F3F5F9;
+}
+
+button,input[type=text]:disabled {
+    background-color: #E4E9F2;
+}
+
+button,
+input[type=submit],
+input[type=button] {
+    margin: 5px;
+
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #AAA;
+    background: linear-gradient(#FFFFFF, #E6EAF3, #CDD6E6);
+
+    padding: 6px 16px;
+
+    font-size: 110%;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 0px #FFF;
+
+    cursor: pointer;
+}
+
+button:default,
+input[type=submit]:default,
+input[type=button]:default {
+    border-color: #8CADE6;
+}
+
+button:active,
+input[type=submit]:active,
+input[type=button]:active {
+    background: linear-gradient(#CDD6E6, #E6EAF3, #FFFFFF);
+}
+
+button:disabled,
+input[type=submit]:disabled,
+input[type=button]:disabled {
+    border-color: #AAA;
+    color: #AAA;
+}
+
+@keyframes animation-submit-warning {
+    0% {color: #AAA; border-color: #AAA;}
+    50% {color: #CC0000; border-color: #CC0000;}
+    100% {color: #AAA; border-color: #AAA;}
+}
+
+button[type=submit]:disabled.progress,
+input[type=submit]:disabled.progress{
+    border-color: #AAA;
+    animation-name: animation-submit-warning;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+button div.icon {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+button:disabled div.icon {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+button div.text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #AAA;
+    box-shadow: 0px 1px 0px #FFF inset;
+    padding: 3px;
+}
